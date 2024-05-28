@@ -10,7 +10,7 @@ FD.io VPP设计的核心是数据包处理图
 
 FD.io VPP数据包处理管道被分解为“数据包处理图”。这种模块化方法意味着任何人都可以“插入”新的图形节点。这使得VPP易于扩展，并且意味着可以针对特定目的自定义插件。VPP也可以通过其低级API进行配置。
 
-![可扩展的模块化图节点架构](https://github.com/penybai/vpp-docs/blob/master/images/extensible-and-modular-graph-node-architecture.jpeg)
+![可扩展的模块化图节点架构](../images/extensible-and-modular-graph-node-architecture.jpeg)
 
 图1 可扩展的模块化图节点架构
 

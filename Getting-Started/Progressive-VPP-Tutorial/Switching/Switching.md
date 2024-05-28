@@ -15,7 +15,7 @@
 4. [show l2fib verbose]()
 
 ### 拓扑
-![](https://github.com/penybai/vpp-docs/blob/master/images/switching_topology.jpeg)
+![](../../../images/switching_topology.jpeg)
 
 ***Switching Topology***
 

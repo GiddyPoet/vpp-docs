@@ -8,7 +8,7 @@ FD.io VPP是第三代矢量数据包处理的实现，具体与美国专利7,961
 
 ### VPP层-实施分类法
 
-![](https://github.com/penybai/vpp-docs/blob/master/images/vpp-layers.png)
+![](../../../images/vpp-layers.png)
 
 * VPP Infra-VPP基础设施层，其中包含核心库源代码。该层执行存储功能，与向量和环配合使用，在哈希表中执行键查找，并与用于调度图节点的计时器一起使用。
 * VLIB-向量处理库。vlib层还处理各种应用程序管理功能：缓冲区，内存和图形节点管理，维护和导出计数器，线程管理，数据包跟踪。 Vlib实现了调试CLI（命令行界面）。

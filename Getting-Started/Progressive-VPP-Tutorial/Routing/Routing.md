@@ -18,7 +18,7 @@
 1. [ip route add]()
 
 ### 拓扑
-![](https://github.com/penybai/vpp-docs/blob/master/images/connecting_two_vpp_instances_with_memif.png)
+![](../../../images/connecting_two_vpp_instances_with_memif.png)
 
 ***Connect two FD.io VPP topology***
 

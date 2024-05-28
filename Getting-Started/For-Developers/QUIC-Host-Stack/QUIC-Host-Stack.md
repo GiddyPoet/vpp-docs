@@ -33,7 +33,7 @@ quic插件提供了[IETF QUIC协议实]()现。它基于[quicly]()库。
 
 与```nclient 2/4```一起运行时，此应用程序的行为是两个首先与给定对等方建立2个连接，一旦一切都打开，就开始打开4个quic流，并传输数据。流程如下。
 
-![](https://github.com/penybai/vpp-docs/blob/master/images/quic_plugin_echo_flow.png)
+![](../../../images/quic_plugin_echo_flow.png)
 
 这样就可以在整个安装和拆卸阶段或者特定阶段计时来评估协议性能。
 
@@ -96,4 +96,4 @@ Quic依赖于主机堆栈结构，即applications，sessions，transport_connect
 
 这些结构链接成如下：
 
-![](https://github.com/penybai/vpp-docs/blob/master/images/quic_plugin_datastructures.png)
+![](../../../images/quic_plugin_datastructures.png)

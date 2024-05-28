@@ -217,10 +217,10 @@ DUT1:
 | ethip4ip4udp-ip4base-iacl1sf-10kflows | 11.06 | 226 |
 
 ### Input ACLS (SKX)
-![](https://github.com/penybai/vpp-docs/blob/master/images/ip4-2n-iacl.png)
+![](../../images/ip4-2n-iacl.png)
 
 ### Output ACLs (HSW)
-![](https://github.com/penybai/vpp-docs/blob/master/images/ip4-3n-oacl.png)
+![](../../images/ip4-3n-oacl.png)
 
 ### 配置
 #### 有状态
@@ -298,7 +298,7 @@ DUT1:
 | ethip4-ip4base | 18.81 | 132 |
 | ethip4-ip4base-copwhtlistbase | 15.12 | 165 |
 
-![](https://github.com/penybai/vpp-docs/blob/master/images/ip4-acl-features-ndr.png)
+![](../../images/ip4-acl-features-ndr.png)
 
 #### 配置
 注意：将创建一个新的VRF 1，其中包含白名单，然后将其应用于接口1。

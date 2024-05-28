@@ -28,7 +28,7 @@ FIB数据模型包括两个部分：控制平面(CP)和数据平面(DP)。控制
 
 * ARP条目(ARP Entries)
 
-  ![ARP数据模型](https://github.com/penybai/vpp-docs/blob/master/images/arp-entries.png)
+  ![ARP数据模型](../../../images/arp-entries.png)
   图1：ARP数据模型
 
   图1显示了ARP条目的数据模型。ARP条目包含由IPv4地址标识的对等方(peer)与其给定接口上的MAC地址之间的映射。接口绑定的VRF，不是数据的一部分。VRF是入口函数，而不是出口。ARP条目描述了如何向对等方发送流量，这是一种出口功能。
@@ -56,12 +56,12 @@ FIB数据模型包括两个部分：控制平面(CP)和数据平面(DP)。控制
     > > * 解聚合(De-aggregate)：仅通过特殊的全零地址和一个表ID来描述路径。这意味着应在表中进行后续查找。
   > * fib_path_list_t代表转发时从中选择路径的路径列表。路径列表是共享对象，即它是多个fib_entry_t子代的父代。为了共享任何对象类型，子节点必须搜索符合其要求的现有对象。为此，必须有一个数据库。路径列表数据库的关键是对它包含的所有路径的组合描述。每次添加路由时都需要搜索路径列表数据库，因此仅填充共享将带来共享的路径列表。融合优势（请参阅部分：[快速融合]()）。
 
-  ![路由数据模型类图](https://github.com/penybai/vpp-docs/blob/master/images/route-data-model-class-diagram.png)
+  ![路由数据模型类图](../../../images/route-data-model-class-diagram.png)
   图2: 路由数据模型类图
 
   图2显示了一条具有两条连接的下一跳路径的路由示例。这些路径中的每条路径都将通过找到与路径属性匹配的邻接关系来解决，该属性与邻接数据库的关键字相同。转发信息（FI）是在数据平面中可用于负载均衡流量的邻接关系集。路径为路由的转发信息提供了邻接关系，路径列表为IP数据包提供了完整的转发信息。
 
-  ![路由对象图](https://github.com/penybai/vpp-docs/blob/master/images/route-object-diagram.png)
+  ![路由对象图](../../../images/route-object-diagram.png)
   图3: 路由对象图
 
   图3显示了为解析路由而创建的对象实例及其关系。这些关系的图性质显而易见。在图的顶部显示子节点，在其下方显示父节点。因此，向前走是从上到下，向后走是从下到上。该图显示了共享的对象，路径列表和邻接关系。共享对象对于快速收敛至关重要（请参阅：[快速收敛]()部分）。
@@ -110,7 +110,7 @@ FIB数据模型包括两个部分：控制平面(CP)和数据平面(DP)。控制
 
   图4显示了用于描述递归路由的数据结构。该表示几乎与连接的下一跳路径相同。区别在于，fib_path_t的父级是另一个fib_entry_t，称为通行条目(via-entry)。
 
-  ![递归路由类图](https://github.com/penybai/vpp-docs/blob/master/images/recursive-route-class-diagram.png)
+  ![递归路由类图](../../../images/recursive-route-class-diagram.png)
   图4: 递归路由类图
 
   为了将流量转发到64.10.128.0/20，FIB必须首先确定如何将流量转发到1.1.1.1/32。这是递归解析。递归解析本质上是数据平面结果的缓存，它模拟via-table表0中“via-address”1.1.1.1的最长前缀匹配(LPM)。
@@ -131,7 +131,7 @@ FIB数据模型包括两个部分：控制平面(CP)和数据平面(DP)。控制
 
   图5显示了创建的对象实例，以表示递归路线及其解析路线。
 
-  ![递归路由对象图](https://github.com/penybai/vpp-docs/blob/master/images/recursive-routes-object-diagram.png)
+  ![递归路由对象图](../../../images/recursive-routes-object-diagram.png)
   图5: 递归路由对象图
 
   如果添加递归路由的源代码本身未执行递归解析，则该源代码可能会无意中编写了递归循环。
@@ -163,7 +163,7 @@ FIB数据模型包括两个部分：控制平面(CP)和数据平面(DP)。控制
   
 数据平面图由控制平面图通过其中的对象将DPO“贡献”到数据平面图而得出。数据平面中的对象仅包含交换数据包所需的信息，因此它们更简单，并且在内存方面更小，目的是将一个DPO放在单个高速缓存行上。从控制平面派生意味着数据平面图仅包含其当前状态可以转发数据包的对象。 例如，fib_path_list_t和load_balance_t之间的区别在于，前者表示控制平面的期望状态，后者表示数据平面的可用状态。如果路径列表中的某些路径未解析或关闭，则负载平衡将不将其包括在转发选项中。
 
-![非递归路由的DPO贡献](https://github.com/penybai/vpp-docs/blob/master/images/dpo-contributions-for-a-non-recursive-route.png)
+![非递归路由的DPO贡献](../../../images/dpo-contributions-for-a-non-recursive-route.png)
 图8：非递归路由的DPO贡献
 
 图8显示了控制平面图的简化视图，表明了贡献DPO的那些对象。还显示了使用DPO的VLIB节点图。
@@ -176,12 +176,12 @@ FIB数据模型包括两个部分：控制平面(CP)和数据平面(DP)。控制
 
 * 在fib_entry_t具有MPLS输出标签的情况下，因此具有fib_path_ext_t，则负载平衡必须是按前缀的，因为作为其父级的MPLS标签本身就是per-fib_entry_t。
   
-![递归路线由DPO贡献](https://github.com/penybai/vpp-docs/blob/master/images/dpo-contributions-for-a-recursive-route.png)
+![递归路线由DPO贡献](../../../images/dpo-contributions-for-a-recursive-route.png)
 图9：递归路由的DPO贡献
 
 图9显示了递归路由贡献的负载均衡对象。
 
-![来自标签的递归路由的DPO贡献](https://github.com/penybai/vpp-docs/blob/master/images/dpo-contributions-from-labelled-recursive-routes.png)
+![来自标签的递归路由的DPO贡献](../../../images/dpo-contributions-from-labelled-recursive-routes.png)
 图10：来自标签的递归路由的DPO贡献
 
 图10显示了标记的递归路由的派生数据平面图。MPLS标签DPO实例的数量可以与路由数乘以每个路由的路径数一样多。因此，mpls-label DPO应该尽可能小。
